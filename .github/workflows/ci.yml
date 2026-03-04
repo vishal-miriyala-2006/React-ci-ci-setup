@@ -20,5 +20,11 @@ jobs:
             - name: "clone the repo"
               uses: actions/checkout@v4
 
+            - name: "listing directories"
+              run: ls
+
             - name: "install dependencies"
               run: npm install
+
+            - name: "listing directories"
+              run: ls
