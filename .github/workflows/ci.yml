@@ -31,7 +31,7 @@ jobs:
             
             - name: "running lint"
               run: npm run lint
-              
+
             - name: "testing"
               run: npm test
 
