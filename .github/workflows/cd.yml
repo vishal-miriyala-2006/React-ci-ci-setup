@@ -5,7 +5,7 @@ on:
         workflows: ["react ci pipeline"]
         types: 
             - completed
-    workflow_dispatch: 
+    # workflow_dispatch: 
 
 jobs:
     deploy:
@@ -21,12 +21,13 @@ jobs:
             - name: "set up vercel cli"
               run: npm install -g vercel
 
-            - name: "build artifact files"
+            - name: "download artifact files"
               uses: actions/download-artifact@v4
               with:
                 name: build
+                path: dist
                 run-id: ${{ github.event.workflow_run.id }}
                 github-token: ${{ github.token }}
 
             - name: "deploy to vercel"
-              run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm --name=cicdproject
+              run: vercel dist --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm
