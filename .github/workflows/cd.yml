@@ -30,3 +30,11 @@ jobs:
 
             - name: "deploy to vercel"
               run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm --name=cicdproject
+
+
+
+
+
+
+
+# https://cicdproject-muo1j1lrw-vishalmiriyala900-gmailcoms-projects.vercel.app/
