@@ -1,40 +1,40 @@
-name: "cd pipeline"
+# name: "cd pipeline"
 
-on: 
-    workflow_run: 
-        workflows: ["react ci pipeline"]
-        types: 
-            - completed
-    # workflow_dispatch: 
+# on: 
+#     workflow_run: 
+#         workflows: ["react ci pipeline"]
+#         types: 
+#             - completed
+#     # workflow_dispatch: 
 
-jobs:
-    deploy:
-        runs-on: ubuntu-latest
-        environment: production1
+# jobs:
+#     deploy:
+#         runs-on: ubuntu-latest
+#         environment: production1
         
-        steps:
-            - name: "set up nodejs"
-              uses: actions/setup-node@v4
-              with:
-                  node-version: '20'
+#         steps:
+#             - name: "set up nodejs"
+#               uses: actions/setup-node@v4
+#               with:
+#                   node-version: '20'
 
-            - name: "set up vercel cli"
-              run: npm install -g vercel
+#             - name: "set up vercel cli"
+#               run: npm install -g vercel
 
-            - name: "download artifact files"
-              uses: actions/download-artifact@v4
-              with:
-                name: build
-                run-id: ${{ github.event.workflow_run.id }}
-                github-token: ${{ github.token }}
+#             - name: "download artifact files"
+#               uses: actions/download-artifact@v4
+#               with:
+#                 name: build
+#                 run-id: ${{ github.event.workflow_run.id }}
+#                 github-token: ${{ github.token }}
 
-            - name: "deploy to vercel"
-              run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm --name=cicdproject
-
-
+#             - name: "deploy to vercel"
+#               run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --confirm --name=cicdproject
 
 
 
 
 
-# https://cicdproject-muo1j1lrw-vishalmiriyala900-gmailcoms-projects.vercel.app/
+
+
+# # https://cicdproject-muo1j1lrw-vishalmiriyala900-gmailcoms-projects.vercel.app/
